@@ -97,8 +97,8 @@ author:
   name             : "Woosik Choi"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Scientist"
-  # location         : "Somewhere"
-  # email            : "ws0213@gmail.com"
+  location         : "Somewhere"
+  email            : "ws0213@gmail.com"
   links:
     - label: "Email: ws0213@gmail.com"
       icon: "fas fa-fw fa-envelope-square"
