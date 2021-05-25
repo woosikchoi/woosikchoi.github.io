@@ -18,7 +18,7 @@ categories: MachineLearning
 확률론 및 통계학에서 두 확률 변수의 사전 확률과 사후 확률 사이의 관계를 나타내는 정리이다. 
 즉, P(A|B)를 알고 있을 때, 확률 P(B|A)를 계산하기 위한 정리로 이해하면 될 것이다. 수식으로 나타내면 아래와 같다.
 
-P(B|A) = P(A \intersection B) / P(A) = P(B) P(A|B) / P(A)
+<img src="https://latex.codecogs.com/svg.latex?P(B|A)=\frac{P(A%20\cap%20B)}{P(A)}=\frac{P(B)P(A|B)}{P(A)}">
 
 - P(A) : A의 사전 확률 (evidence) - 현재의 증거
 - P(B): B의 사전 확률 (prior probability) - 과거의 경험
