@@ -20,7 +20,7 @@ categories: MachineLearning
 
 <img src="https://latex.codecogs.com/svg.latex?P(B|A)=\frac{P(A%20\cap%20B)}{P(A)}=\frac{P(B)P(A|B)}{P(A)}">
 
-- P(A) : A의 사전 확률 (evidence) - 현재의 증거
+- <img src="https://latex.codecogs.com/svg.latex?P(A)"> : A의 사전 확률 (evidence) - 현재의 증거
 - P(B): B의 사전 확률 (prior probability) - 과거의 경험
 - P(A|B): 사건 B가 주어졌을 때의 A의 조건부 확률 (likelihood) - 알려진 결과에 기초한 어떤 가설에 대한 가능성
 - P(B|A): 사건 A라는 증거에 대한 사후 확률 (posterior probability) - 사건 A가 일어났다는 것을 알고, 그것이 사건 B로부터 일어난것이라고 생각되는 조건부 확률
