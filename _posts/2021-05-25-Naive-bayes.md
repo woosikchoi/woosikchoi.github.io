@@ -25,19 +25,20 @@ categories: MachineLearning
 
 ## Example of Bayes' Theorem
 
-**Q1.** 암은 전체 인구의 1%가 걸리는 병이고, 암 검사의 적중률은 95%이다.  '갑'이 암검사를 실시했는데 '갑'의 암 검사 결과는 양성이었다. '갑'이 실제 암에 걸렸을 확률은?
+**Q.** 암은 전체 인구의 1%가 걸리는 병이고, 암 검사의 적중률은 95%이다.  '갑'이 암검사를 실시했는데 '갑'의 암 검사 결과는 양성이었다. '갑'이 실제 암에 걸렸을 확률은?
 
-**A1.** '갑'이 실제 암에 걸렸을 확률은 약 16%임
+**A.** '갑'이 실제 암에 걸렸을 확률은 약 16%임
 
 - A: 암 검사 결과의 양성인 사건
 
 - B: 실제 암에 걸렸을 사건 - <img src="https://latex.codecogs.com/svg.latex?P(B)=0.01">
 
 - <img src="https://latex.codecogs.com/svg.latex?P(A|B)=0.95">
-
 - <img src="https://latex.codecogs.com/svg.latex?P(B|A)">: 검사 결과가 양성인 사람이 실제 암에 걸렸을 확률 ('갑'이 암일 확률)
 <img src="https://latex.codecogs.com/svg.latex?P(B|A) = \frac{P(B) P(A|B)}{P(A)}">
+
 <img src="https://latex.codecogs.com/svg.latex?=\frac{P(B) P(A|B)}{P(A \cap B)+P(A \cap B^{C})} = \frac{P(B) P(A|B)}{P(A|B)P(B)+P(A|B^{C})P(B^C)}">
+
 <img src="https://latex.codecogs.com/svg.latex?=\frac{0.01 \times 0.95}{0.95 \times 0.01 + 0.05 \times 0.99} \simeq 0.16">
   
 **Interpretation**
@@ -67,11 +68,11 @@ Bayes' Theorem에 기초한 naive한 (소박한, 간단한, 순진한) 알고리
 
 - Assumption (Probability)
 
-  - 74개 중 30개의 이메일은 스팸 메시지 (A)
-  - 74개의 메일 중 51개의 이메일은 test 단어를 포함 (B)
-  - Test 단어가 들어가 있는 20개의 이메일을 스팸으로 분류 (P(B|A))
+  - 74개 중 30개의 이메일은 스팸 메시지 (*A*)
+  - 74개의 메일 중 51개의 이메일은 test 단어를 포함 (*B*)
+  - Test 단어가 들어가 있는 20개의 이메일을 스팸으로 분류 (<img src="https://latex.codecogs.com/svg.latex?P(B|A)">)
 
-- 최근 수신한 메일에 test가 포함되어있을 경우 해당 메일이 spam일 확률 (P(A|B) = 0.39)
+- 최근 수신한 메일에 test가 포함되어있을 경우 해당 메일이 spam일 확률 (<img src="https://latex.codecogs.com/svg.latex?P(A|B) = 0.39">)
 
   - <img src="https://latex.codecogs.com/svg.latex?P(A) = \frac{30}{74}">
   - <img src="https://latex.codecogs.com/svg.latex?P(A) = \frac{51}{74}">
