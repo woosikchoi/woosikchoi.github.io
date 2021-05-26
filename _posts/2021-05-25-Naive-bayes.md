@@ -1,11 +1,8 @@
 ---
-title: "Naive Bayes"
+title: "Naive Bayes Classification"
 date: 2020-05-25 18:00
 categories: MachineLearning
 ---
- 
-
-# Naive Bayes Classification
 
 개별 변수 (데이터 속성) 사이의 독립을 가정하는 베이즈 정리 (Bayes' Theorem) 를 적용한 확률 기반 분류기의 일종이다.
 조건부 확률 모형이며 이는 수학적인 표현을 통하여 직관적으로 이해 및 해석이 가능하다.
@@ -14,16 +11,15 @@ categories: MachineLearning
 나이브 베이즈 분류를 이해하기 위해서는 베이즈 정리에 대해 우선적으로 이해할 필요가 있다.
 
 ## Bayes' Theorem
-
 확률론 및 통계학에서 두 확률 변수의 사전 확률과 사후 확률 사이의 관계를 나타내는 정리이다. 
 즉, P(A|B)를 알고 있을 때, 확률 P(B|A)를 계산하기 위한 정리로 이해하면 될 것이다. 수식으로 나타내면 아래와 같다.
 
 <img src="https://latex.codecogs.com/svg.latex?P(B|A)=\frac{P(A%20\cap%20B)}{P(A)}=\frac{P(B)P(A|B)}{P(A)}">
 
 - <img src="https://latex.codecogs.com/svg.latex?P(A)"> : A의 사전 확률 (evidence) - 현재의 증거
-- P(B): B의 사전 확률 (prior probability) - 과거의 경험
-- P(A|B): 사건 B가 주어졌을 때의 A의 조건부 확률 (likelihood) - 알려진 결과에 기초한 어떤 가설에 대한 가능성
-- P(B|A): 사건 A라는 증거에 대한 사후 확률 (posterior probability) - 사건 A가 일어났다는 것을 알고, 그것이 사건 B로부터 일어난것이라고 생각되는 조건부 확률
+- <img src="https://latex.codecogs.com/svg.latex?P(B)">: B의 사전 확률 (prior probability) - 과거의 경험
+- <img src="https://latex.codecogs.com/svg.latex?P(A|B)">: 사건 B가 주어졌을 때의 A의 조건부 확률 (likelihood) - 알려진 결과에 기초한 어떤 가설에 대한 가능성
+- <img src="https://latex.codecogs.com/svg.latex?P(B|A)">: 사건 A라는 증거에 대한 사후 확률 (posterior probability) - 사건 A가 일어났다는 것을 알고, 그것이 사건 B로부터 일어난것이라고 생각되는 조건부 확률
 
 위의 수식은, 조건부 확률의 정의 및 수학적 표현을 통해 간단하게 증명 가능하다.
 
@@ -35,17 +31,15 @@ categories: MachineLearning
 
 - A: 암 검사 결과의 양성인 사건
 
-- B: 실제 암에 걸렸을 사건 - P(B) = 0.01
+- B: 실제 암에 걸렸을 사건 - <img src="https://latex.codecogs.com/svg.latex?P(B)=0.01">
 
-- P(A|B): 0.95
+- <img src="https://latex.codecogs.com/svg.latex?P(A|B)=0.95">
 
-- P(B|A): 검사 결과가 양성인 사람이 실제 암에 걸렸을 확률 ('갑'이 암일 확률)
-
-  P(B) P(A|B) / P(A) 
-  = P(B) P(A|B) / (P(A \intersection B) + P(A \intersection B^C)) 
-  = P(B) P(A|B) / (P(A|B)P(B) + P(A|B^C)P(B^C))
-  = (0.01 * 0.95) / (0.95 * 0.01) + (0.05 * 0.99) \simeq = 0.16
-
+- <img src="https://latex.codecogs.com/svg.latex?P(B|A)">: 검사 결과가 양성인 사람이 실제 암에 걸렸을 확률 ('갑'이 암일 확률)
+<img src="https://latex.codecogs.com/svg.latex?P(B|A) = \frac{P(B) P(A|B)}{P(A)}">
+<img src="https://latex.codecogs.com/svg.latex?=\frac{P(B) P(A|B)}{P(A \cap B)+P(A \cap B^{C})} = \frac{P(B) P(A|B)}{P(A|B)P(B)+P(A|B^{C})P(B^C)}">
+<img src="https://latex.codecogs.com/svg.latex?=\frac{0.01 \times 0.95}{0.95 \times 0.01 + 0.05 \times 0.99} \simeq 0.16">
+  
 **Interpretation**
 
 암 검사 적중률이 95%임에도 불구하고, 실제 암에 걸렸을 확률은 16%에 불과하다. 이는 암 발병률 자체가 매우 희귀하다. 따라서 99%의 암에 걸리지 않은 사람에 대해서도 암 검사가 양성이 나올 수 있는 확률이 고려되었기 때문이다. 실제 decision tree 기반으로 아래 그림과 같이 그림을 그려보면 조금 더 직관적인 이해가 가능하다.
@@ -79,8 +73,8 @@ Bayes' Theorem에 기초한 naive한 (소박한, 간단한, 순진한) 알고리
 
 - 최근 수신한 메일에 test가 포함되어있을 경우 해당 메일이 spam일 확률 (P(A|B) = 0.39)
 
-  - P(A) = 30 / 74
-  - P(B) = 51 / 74
-  - P(B|A) = 20 / 30 = 2 / 3
+  - <img src="https://latex.codecogs.com/svg.latex?P(A) = \frac{30}{74}">
+  - <img src="https://latex.codecogs.com/svg.latex?P(A) = \frac{51}{74}">
+  - <img src="https://latex.codecogs.com/svg.latex?P(A) = \frac{20}{30}">
 
-  **P(A|B) = P(B|A) P(A) / P(B) = (2/3 * 30 / 74) / (51/74) = 20 / 51 \simeq = 0.39**
+<img src="https://latex.codecogs.com/svg.latex?P(A|B) = \frac{P(B|A)P(A)}{P(B)} = \frac{2/3*30/74}{51/74} = 20 / 51 \simeq = 0.39">
